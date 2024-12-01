@@ -22,7 +22,7 @@
 
   <body onload="init();showTopMenuButtons();">
     <div class="background"></div>
-
+    <!-- SIDE NAVIGATION/APP NAVIGATION -->
     <div id="myNav" class="overlayNav">
       <div id="menuLinks" class="navCentered">
         <p><img src="./Pix/ba_logo.png" class="logo" /></p>
@@ -35,7 +35,8 @@
         <div class="navLink" onclick="goTo('player')">Back to Player</div>
       </div>
     </div>
-
+    <!-- END SIDE NAVITGATION -->
+    <!-- SIDE DRAWER -->
     <div id="myWarning" class="overlayWarning">
       <div id="warning" class="navCentered">
         <p>Click to Start Playing!</p>
@@ -48,10 +49,13 @@
         </p>
       </div>
     </div>
-
+    <!-- END SIDE DRAWER -->
+    <!-- TOP MENU -->
     <div id="hamburger"></div>
-    <div class="anchor" id="player"></div>
+    <!-- END TOP MENU -->
 
+    <div class="anchor" id="player"></div>
+    <!-- MAIN CONTENT -->
     <div class="tile1">
       <a href="https://Infuzik.com" class="nounderline"
         ><div id="title">
@@ -310,9 +314,10 @@
 
       <div id="radioTouch"></div>
     </div>
-
+    <!-- END MAIN CONTENT -->
     <div class="anchor" id="audiofile"></div>
 
+    <!-- MAIN APP SCRIPT -->
     <script>
       // params
       var TABS = 5;
@@ -1062,6 +1067,8 @@
         setG(4);
       });
     </script>
+    <!-- END MAIN APP SCRIPT -->
+    <!-- UI ACTIONS -->
     <script>
       // Screen management
 
@@ -1096,5 +1103,6 @@
         document.getElementById("myWarning").style.right = "-100%";
       }
     </script>
+    <!-- END UI ACTIONS -->
   </body>
 </html>
