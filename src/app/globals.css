@@ -1,9 +1,4 @@
 /* app/globals.css */
-
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,7 +15,7 @@ body {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-montserrat);
   background-color: #e5e4e2; /* platinum */
   color: #333333; /* charcoal */
   @apply bg-platinum dark:bg-platinum-dark text-charcoal dark:text-platinum font-sans antialiased;
@@ -35,7 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-cormorant);
   @apply font-display text-obsidian dark:text-obsidian-light;
 }
 
@@ -52,11 +47,11 @@ a {
   .luxury-card {
     @apply bg-white dark:bg-charcoal-dark rounded-lg shadow-premium hover:shadow-premium-hover transition-shadow duration-300 p-6;
   }
-  
+
   .premium-text {
     @apply tracking-wide leading-relaxed dark:text-platinum/80;
   }
-  
+
   .gold-gradient {
     @apply bg-gradient-luxury text-obsidian dark:text-obsidian-light;
   }
@@ -69,7 +64,7 @@ section {
 }
 
 /* Improved mobile touch targets */
-button, 
+button,
 a {
   @apply min-h-[44px] min-w-[44px];
   touch-action: manipulation;
@@ -82,6 +77,6 @@ a {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

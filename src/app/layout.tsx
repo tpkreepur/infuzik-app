@@ -1,8 +1,17 @@
 import './globals.css';
 import { Metadata } from 'next';
+import { Cormorant, Montserrat } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+
+const cormorant = Cormorant({
+  subsets: ['latin'],
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Infuzik - Elite Brain Enhancement',
@@ -27,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={cormorant.className} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
