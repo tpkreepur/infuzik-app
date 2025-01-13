@@ -5,9 +5,9 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-800">
         <div className="container">
           <div className="animate-fade-up space-y-6 text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 dark:text-white">
-              Entrain your mind with Infuzik
-            </h1>
+            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white">
+              Entrain your brain
+            </h2>
             <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
               Discover the power of binaural beats and isochronic tones to
               improve focus, relaxation, and sleep.

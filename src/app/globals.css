@@ -6,21 +6,22 @@
   :root {
     --background: 255 255 255;
     --foreground: 24 24 27;
-    --primary: 199 84% 55%;  /* Match primary-500 */
+    --primary: 199 84% 55%; /* Match primary-500 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 297 84% 60%;  /* Match secondary-500 */
+    --secondary: 297 84% 60%; /* Match secondary-500 */
     --secondary-foreground: 0 0% 100%;
     --neutral: 240 6% 10%;
     --neutral-foreground: 0 0% 98%;
 
     --radius: 0.5rem;
     --font-sans: "Inter", system-ui, sans-serif;
+    --font-serif: "Bodoni Moda", serif;
   }
 
   .dark {
     --background: 24 24 27;
     --foreground: 250 250 250;
-    --primary: 199 84% 45%;  /* Darker for better contrast */
+    --primary: 199 84% 45%; /* Darker for better contrast */
     --primary-foreground: 210 40% 98%;
     --secondary: 297 84% 50%;
     --secondary-foreground: 0 0% 98%;
@@ -43,6 +44,20 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
   }
 }
 
