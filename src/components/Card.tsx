@@ -9,8 +9,8 @@ interface CardProps {
   accent?: boolean;
 }
 
-export default function Card({ 
-  children, 
+export default function Card({
+  children,
   className,
   variant = 'primary',
   hover = true,
@@ -27,8 +27,10 @@ export default function Card({
           'border border-platinum/20 dark:border-platinum/10',
           'p-6 sm:p-8',
           {
-            'bg-white/90 dark:bg-charcoal-dark/90 shadow-premium': variant === 'primary',
-            'bg-gradient-to-br from-white/50 to-white/30 dark:from-charcoal-dark/50 dark:to-charcoal-dark/30': variant === 'secondary',
+            'bg-white/90 dark:bg-charcoal-dark/90 shadow-premium':
+              variant === 'primary',
+            'bg-gradient-to-br from-white/50 to-white/30 dark:from-charcoal-dark/50 dark:to-charcoal-dark/30':
+              variant === 'secondary',
             [`hover:shadow-premium-hover 
               hover:border-gold/30 
               dark:hover:border-gold/20 
@@ -42,9 +44,7 @@ export default function Card({
           className
         )}
       >
-        <div className="relative z-10">
-          {children}
-        </div>
+        <div className="relative z-10">{children}</div>
         {variant === 'primary' && (
           <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent rounded-lg pointer-events-none" />
         )}

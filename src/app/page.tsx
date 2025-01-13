@@ -3,8 +3,8 @@ import Card from '@/components/Card';
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen pt-16">
-      <section id="hero" className="min-h-screen flex items-center">
+    <main className="flex flex-col items-center min-h-screen pt-16 px-4 sm:px-6 lg:px-8">
+      <section id="hero" className="min-h-[calc(100vh-4rem)] flex items-center py-16 sm:py-24">
         <div className="space-y-6 sm:space-y-8 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             Elevate Your
@@ -22,8 +22,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="min-h-screen flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mt-16">
+      <section id="about" className="min-h-screen w-full flex items-center py-16 sm:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full max-w-7xl mx-auto">
           <Card accent>
             <h3 className="text-2xl font-bold mb-4 bg-gradient-luxury bg-clip-text text-transparent">
               Premium Features
