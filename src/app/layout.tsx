@@ -1,32 +1,39 @@
-import type { Metadata } from "next";
-import { Inter, Bodoni_Moda } from "next/font/google";
-import { bodoni, inter } from "./fonts";
-import Navigation from "@/components/navigation";
-import "./globals.css";
-
-// const inter = Inter({ subsets: ["latin"] });
-// const bodoni = Bodoni_Moda({ subsets: ["latin"] });
+import './globals.css';
+import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Infuzik - Entrain Your Brain",
-  description: "Binaural beats and isochronic tones for focus and relaxation",
+  title: 'Infuzik - Elite Brain Enhancement',
+  description:
+    'Empower your cognitive performance with Infuzik, tailored for high-level executives.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://infuzik.com/',
+    siteName: 'Infuzik',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@infuzik',
+    creator: '@infuzik',
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body
-        className={`${inter.className} antialiased bg-white dark:bg-neutral-900`}
-      >
-        <Navigation />
-        <div className="animated fade-in">{children}</div>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

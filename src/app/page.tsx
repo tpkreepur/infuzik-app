@@ -1,25 +1,60 @@
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-800">
-        <div className="container">
-          <div className="animate-fade-up space-y-6 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white">
-              Entrain your brain
-            </h2>
-            <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
-              Discover the power of binaural beats and isochronic tones to
-              improve focus, relaxation, and sleep.
-            </p>
-            <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg animated">
-              Get Started
-            </button>
+    <main className="flex flex-col items-center min-h-screen pt-16">
+      <section id="hero" className="min-h-screen flex items-center">
+        <div className="space-y-6 sm:space-y-8 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+            Elevate Your
+            <br />
+            Mental Performance
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl max-w-2xl text-center mb-6 sm:mb-8 premium-text text-charcoal/80 dark:text-platinum/80">
+            Exclusive cognitive enhancement solutions for distinguished leaders
+            and executives.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 items-center justify-center">
+            <Button variant="primary">Begin Your Journey</Button>
+            <Button variant="secondary">Learn More</Button>
           </div>
         </div>
       </section>
 
-      {/* Features and Contact sections with similar updates */}
-    </div>
+      <section id="about" className="min-h-screen flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mt-16">
+          <Card accent>
+            <h3 className="text-2xl font-bold mb-4 bg-gradient-luxury bg-clip-text text-transparent">
+              Premium Features
+            </h3>
+            <p className="premium-text">
+              Experience unparalleled cognitive enhancement with our
+              cutting-edge solutions.
+            </p>
+          </Card>
+          <Card variant="secondary" hover>
+            <h3 className="text-2xl font-bold mb-4">Elite Support</h3>
+            <p className="premium-text">
+              Dedicated assistance tailored to your executive lifestyle.
+            </p>
+          </Card>
+          <Card>
+            <h3 className="text-2xl font-bold mb-4">Results Driven</h3>
+            <p className="premium-text">
+              Measurable improvements in mental performance and productivity.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      <section id="pricing" className="min-h-screen flex items-center">
+        // ...TODO: pricing section content...
+      </section>
+
+      <section id="contact" className="min-h-screen flex items-center">
+        // ...TODO: contact section content...
+      </section>
+    </main>
   );
 }
