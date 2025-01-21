@@ -1,4 +1,4 @@
-import TonePlayer from '@/components/player/updated-player';
+import AudioPlayer from '@/components/AudioPlayer';
 
 export default function Sample() {
   return (
@@ -17,7 +17,7 @@ export default function Sample() {
             Exclusive cognitive enhancement solutions for distinguished leaders
             and executives.
           </p>
-          {/* <TonePlayer /> */}
+          <AudioPlayer />
         </div>
       </section>
     </main>
