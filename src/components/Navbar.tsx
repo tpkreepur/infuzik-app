@@ -1,29 +1,49 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Button from './Button';
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Sample', href: '#sample' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about', isHash: true },
+  { label: 'Pricing', href: '/#pricing', isHash: true },
+  { label: 'Contact', href: '/#contact', isHash: true },
+  { label: 'Sample', href: '/sample', isHash: false },
+  // { label: 'Sign In', href: '/sign-in', isHash: false },
+  // { label: 'Sign Up', href: '/sign-up', isHash: false },
 ];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (item: { href: string; isHash: boolean }) => {
+    if (item.isHash) {
+      // Only handle scroll if we're on the homepage
+      if (pathname === '/') {
+        const element = document.querySelector(item.href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
   useEffect(() => {
+    // Only track scroll position on homepage
+    if (pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.href.substring(1));
+      const sections = navItems
+        .filter((item) => item.isHash)
+        .map((item) => item.href.substring(2));
+
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -37,37 +57,48 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <nav className="fixed w-full bg-white/80 dark:bg-charcoal/80 backdrop-blur-sm z-50 border-b border-platinum/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <button
-            onClick={() => scrollToSection('#hero')}
+          <Link
+            href="/"
             className="font-bold text-2xl text-charcoal dark:text-platinum"
           >
             Infuzik
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map(({ label, href }) => (
-              <button
-                key={href}
-                onClick={() => scrollToSection(href)}
-                className={`text-charcoal dark:text-platinum hover:text-primary transition-colors ${
-                  activeSection === href.substring(1) ? 'text-gold' : ''
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.isHash ? (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavigation(item)}
+                  className={`text-charcoal dark:text-platinum hover:text-primary transition-colors ${
+                    activeSection === item.href.substring(2) ? 'text-gold' : ''
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-charcoal dark:text-platinum hover:text-primary transition-colors ${
+                    pathname === item.href ? 'text-gold' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <Button
               variant="primary"
               size="sm"
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => (window.location.href = '/sign-up')}
             >
               Get Started
             </Button>
@@ -102,35 +133,43 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden ${
-            isMobileMenuOpen ? 'block' : 'hidden'
+          className={`md:hidden menu-enter ${
+            isMobileMenuOpen ? 'menu-enter-active' : ''
           } border-t border-platinum/10 mt-2`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map(({ label, href }) => (
-              <button
-                key={href}
-                onClick={() => {
-                  scrollToSection(href);
-                  setIsMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left px-3 py-2 rounded-md ${
-                  activeSection === href.substring(1)
-                    ? 'bg-gold/10 text-gold'
-                    : 'text-charcoal dark:text-platinum hover:bg-platinum/10'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.isHash ? (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavigation(item)}
+                  className={`block w-full text-left px-3 py-2 rounded-md ${
+                    activeSection === item.href.substring(2)
+                      ? 'bg-gold/10 text-gold'
+                      : 'text-charcoal dark:text-platinum hover:bg-platinum/10'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block w-full text-left px-3 py-2 rounded-md ${
+                    pathname === item.href
+                      ? 'bg-gold/10 text-gold'
+                      : 'text-charcoal dark:text-platinum hover:bg-platinum/10'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <div className="px-3 py-2">
               <Button
                 variant="primary"
                 size="sm"
-                onClick={() => {
-                  scrollToSection('#contact');
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => (window.location.href = '/sign-up')}
                 className="w-full"
               >
                 Get Started
