@@ -5,6 +5,7 @@ import Button from './Button';
 
 const navItems = [
   { label: 'About', href: '#about' },
+  { label: 'Sample', href: '#sample' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -89,9 +90,10 @@ export default function Navbar() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d={isMobileMenuOpen 
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                d={
+                  isMobileMenuOpen
+                    ? 'M6 18L18 6M6 6l12 12'
+                    : 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
                 }
               />
             </svg>
@@ -99,8 +101,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div 
-          className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} border-t border-platinum/10 mt-2`}
+        <div
+          className={`md:hidden ${
+            isMobileMenuOpen ? 'block' : 'hidden'
+          } border-t border-platinum/10 mt-2`}
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map(({ label, href }) => (
