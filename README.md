@@ -1,6 +1,4 @@
-# INFUZIK UI
-
-Infuzik is built on Next.js and Tailwinds. Authentication for users is provided by Auth0 to allow social media account logins.
+# INFUZIK WEBSITE
 
 ## Getting Started
 
