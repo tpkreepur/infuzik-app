@@ -29,6 +29,10 @@ export default function FrostedCard({
       <div
         className={clsx(
           "bg-platinum/30 dark:bg-charcoal/30 backdrop-blur-md rounded-lg p-6 shadow-gold",
+          {
+            "bg-platinum/40 dark:bg-charcoal/40": variant === "secondary",
+            "hover:bg-platinum/50 dark:hover:bg-charcoal/50": hover,
+          },
           className
         )}
       >
