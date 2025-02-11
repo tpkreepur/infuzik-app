@@ -1,7 +1,11 @@
+'use client';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <main className="flex flex-col items-center min-h-screen pt-16 px-4 sm:px-6 lg:px-8">
       <section
@@ -15,21 +19,29 @@ export default function Home() {
             Mental Performance
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl max-w-2xl text-center mb-6 sm:mb-8 premium-text text-charcoal/80 dark:text-platinum/80">
-            Exclusive cognitive enhancement solutions for distinguished leaders
-            and executives.
+            Entrain your brain with Infuzik.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 items-center justify-center">
-            <Button variant="primary">Begin Your Journey</Button>
-            <Button variant="secondary">Learn More</Button>
+            <Button
+              variant="primary"
+              onClick={() => router.push('/sign-up')}
+              aria-label="Begin your journey - Sign up now"
+            >
+              Begin Your Journey
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                document
+                  .getElementById('about')
+                  ?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Learn more about our services"
+            >
+              Learn More
+            </Button>
           </div>
         </div>
-      </section>
-
-      <section
-        id="about"
-        className="min-h-screen w-full flex items-center py-16 sm:py-24"
-      >
-        {/* TODO: about section content */}
       </section>
 
       <section id="pricing" className="min-h-screen flex items-center">

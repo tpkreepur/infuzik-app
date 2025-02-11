@@ -31,14 +31,14 @@ export default function Card({
               variant === 'primary',
             'bg-gradient-to-br from-white/50 to-white/30 dark:from-charcoal-dark/50 dark:to-charcoal-dark/30':
               variant === 'secondary',
-            [`hover:shadow-premium-hover 
-              hover:border-gold/30 
-              dark:hover:border-gold/20 
-              transform 
-              hover:-translate-y-1 
-              hover:scale-[1.02] 
-              transition-all 
-              duration-300 
+            [`hover:shadow-premium-hover
+              hover:border-gold/30
+              dark:hover:border-gold/20
+              transform
+              hover:-translate-y-1
+              hover:scale-[1.02]
+              transition-all
+              duration-300
               ease-out`]: hover,
           },
           className

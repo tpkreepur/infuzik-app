@@ -81,3 +81,16 @@ a {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* Menu animations */
+.menu-enter {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.menu-enter-active {
+  max-height: 500px;
+  opacity: 1;
+}

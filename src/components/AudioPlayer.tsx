@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { AudioEngine } from '@/lib/audio-engine';
 import { IoMoonOutline, IoBulbOutline } from 'react-icons/io5';
-import { IoMdPlay, IoMdPause } from 'react-icons/io';
+import { IoMdPlay, IoMdPause, IoMdSquare } from 'react-icons/io';
 
 interface AudioPlayerProps {
   defaultPreset?: 'sleep' | 'focus';
@@ -26,6 +26,8 @@ const AudioPlayer = ({ defaultPreset = 'focus' }: AudioPlayerProps) => {
         if (mounted) {
           setEngine(audioEngine);
           audioEngine.setPreset(defaultPreset);
+          // Initialize volume
+          audioEngine.setVolume(50);
           setIsLoading(false);
         }
       } catch (err) {
@@ -50,11 +52,18 @@ const AudioPlayer = ({ defaultPreset = 'focus' }: AudioPlayerProps) => {
   const togglePlay = () => {
     if (!engine) return;
     if (isPlaying) {
-      engine.stop();
-    } else {
-      engine.start();
+      engine.pause(); // Use pause instead of stop to maintain oscillator state
+    }
+    if (!isPlaying) {
+      engine.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const handleStop = () => {
+    if (!engine) return;
+    engine.stop();
+    setIsPlaying(false);
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,8 +98,16 @@ const AudioPlayer = ({ defaultPreset = 'focus' }: AudioPlayerProps) => {
         <button
           onClick={togglePlay}
           className="p-4 rounded-full bg-accent hover:bg-accent/80 transition-colors"
+          aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <IoMdPause size={32} /> : <IoMdPlay size={32} />}
+        </button>
+        <button
+          onClick={handleStop}
+          className="p-4 rounded-full bg-accent/20 hover:bg-accent/30 transition-colors"
+          aria-label="Stop"
+        >
+          <IoMdSquare size={32} />
         </button>
       </div>
       <div className="w-full max-w-xs flex items-center gap-2">
@@ -108,20 +125,24 @@ const AudioPlayer = ({ defaultPreset = 'focus' }: AudioPlayerProps) => {
           aria-valuemax={100}
           aria-valuenow={volume}
         />
-        <span className="text-sm w-8" aria-hidden="true">{volume}%</span>
+        <span className="text-sm w-8" aria-hidden="true">
+          {volume}%
+        </span>
       </div>
       <div className="flex gap-4">
         <button
           onClick={() => setPreset('sleep')}
           className="p-3 rounded-full hover:bg-platinum/10 transition-colors"
-          title="Sleep preset"
+          title="Sleep"
+          aria-label="Activate sleep mode"
         >
           <IoMoonOutline size={24} />
         </button>
         <button
           onClick={() => setPreset('focus')}
           className="p-3 rounded-full hover:bg-platinum/10 transition-colors"
-          title="Focus preset"
+          title="Focus"
+          aria-label="Activate focus mode"
         >
           <IoBulbOutline size={24} />
         </button>

@@ -1,19 +1,18 @@
 import './globals.css';
 import { Metadata } from 'next';
-import {
-  Cormorant,
-  Montserrat,
-  Roboto_Condensed,
-  Italiana,
-} from 'next/font/google';
+// import {
+//   Cormorant,
+//   Montserrat,
+//   Roboto_Condensed,
+//   Italiana,
+// } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Infuzik - Elite Brain Enhancement',
-  description:
-    'Empower your cognitive performance with Infuzik, tailored for high-level executives.',
+  description: 'Empower your cognitive performance with Infuzik',
   openGraph: {
     type: 'website',
     locale: 'en_US',
