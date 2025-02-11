@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import FrostedCard from "@/components/FrostedCard";
 
-export default function About(): JSX.Element {
+export default function About() {
   return (
     <motion.div
       initial={{ opacity: 1 }}

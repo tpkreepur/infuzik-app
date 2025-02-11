@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import FrostedCard from "@/components/FrostedCard";
 
-export default function Contact(): JSX.Element {
+export default function Contact() {
   return (
     <motion.div
       initial={{ opacity: 1, scale: 0.95 }}

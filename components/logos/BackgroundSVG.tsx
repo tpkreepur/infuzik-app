@@ -41,7 +41,7 @@ const Wave = React.forwardRef<
 ));
 Wave.displayName = "Wave";
 
-function BackgroundSVG(): JSX.Element {
+function BackgroundSVG() {
   return (
     <motion.div
       className="absolute inset-0 z-[-1] top-0"
