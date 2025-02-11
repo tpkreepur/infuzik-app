@@ -16,7 +16,7 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className="min-h-screen bg-platinum text-charcoal dark:bg-platinum-dark dark:text-ivory">
