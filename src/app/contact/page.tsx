@@ -1,8 +1,15 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export default function Contact() {
   return (
-    <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="flex flex-col items-center justify-center min-h-screen p-6 space-between"
+    >
       <section className="w-full max-w-md bg-white dark:bg-charcoal rounded-lg shadow-lg p-8">
         <h1 className="text-2xl font-bold text-charcoal dark:text-platinum mb-6">
           Contact Us
@@ -37,6 +44,6 @@ export default function Contact() {
           </button>
         </form>
       </section>
-    </main>
+    </motion.section>
   );
 }

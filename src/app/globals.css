@@ -58,6 +58,18 @@ a {
   }
 }
 
+@layer utilities {
+  .backdrop-blur-sm {
+    @apply backdrop-filter backdrop-blur-[8px];
+  }
+
+  .transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+}
+
 /* Smooth section transitions */
 section {
   @apply transition-opacity duration-300 ease-in-out;

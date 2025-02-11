@@ -35,7 +35,8 @@ module.exports = {
         'hero-title': '5rem',
       },
       boxShadow: {
-        premium: '0 4px 20px DEFAULT',
+        gold: '0 4px 20px rgba(212, 175, 55, 0.25)', // or your preferred shadow value
+        premium: '0 4px 20px rgba(0,0,0,0.1)',
         'premium-hover': '0 8px 30px rgba(212, 175, 55, 0.25)',
       },
       backgroundImage: {

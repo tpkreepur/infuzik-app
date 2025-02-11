@@ -1,119 +1,120 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
-import Button from './Button';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaSun, FaMoon } from 'react-icons/fa';
+import { siteInfo } from '@/lib/site-info';
+import clsx from 'clsx';
 
-const navItems = [
-  { label: 'About', href: '/about', isHash: false },
-  { label: 'Pricing', href: '/pricing', isHash: false },
-  { label: 'Contact', href: '/contact', isHash: false },
-  // { label: 'Sample', href: '/sample', isHash: false },
-  // { label: 'Sign In', href: '/sign-in', isHash: false },
-  // { label: 'Sign Up', href: '/sign-up', isHash: false },
-];
-
-export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('');
+const NavBar: React.FC = () => {
+  const { theme, setTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const handleNavigation = (item: { href: string; isHash: boolean }) => {
-    if (item.isHash) {
-      // Only handle scroll if we're on the homepage
-      if (pathname === '/') {
-        const element = document.querySelector(item.href.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-    setIsMobileMenuOpen(false);
-  };
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Only track scroll position on homepage
-    if (pathname !== '/') {
-      setActiveSection('');
-      return;
-    }
+    setMounted(true);
+  }, []);
 
-    const handleScroll = () => {
-      const sections = navItems
-        .filter((item) => item.isHash)
-        .map((item) => item.href.substring(2));
+  if (!mounted) return null;
 
-      const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      setActiveSection(current || '');
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname]);
+  const NavLink = ({
+    href,
+    children,
+    onClick,
+    className,
+  }: {
+    href: string;
+    children: React.ReactNode;
+    onClick?: () => void;
+    className?: string;
+  }) => {
+    const active = pathname === href;
+    return (
+      <Link href={href}>
+        <span
+          onClick={onClick}
+          className={clsx(
+            'px-2 py-1 inline-block',
+            'text-charcoal dark:text-ivory',
+            active ? 'text-gold' : 'hover:text-gold dark:hover:text-gold',
+            className
+          )}
+        >
+          {children}
+          {active && (
+            <span className="block h-1 bg-gold rounded-full mt-1"></span>
+          )}
+        </span>
+      </Link>
+    );
+  };
 
   return (
-    <nav className="fixed w-full bg-white/80 dark:bg-charcoal/80 backdrop-blur-sm z-50 border-b border-platinum/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16">
-          {/* Logo and Title Group */}
-          <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Infuzik Logo" width={48} height={48} />
-            <Link
-              href="/"
-              className="font-bold text-2xl text-charcoal dark:text-platinum"
-            >
-              Infuzik
-            </Link>
+    <>
+      <header className="fixed top-0 w-full backdrop-blur-sm bg-ivory/90 dark:bg-charcoal/90 border-b border-platinum/10 shadow-sm p-4 z-50">
+        <nav className="container max-w-7xl mx-auto h-full flex justify-between items-center px-4 sm:px-6 lg:px-8">
+          {/* Logo and Brand */}
+          <div className="flex items-center space-x-2">
+            <Image
+              src={siteInfo.brand.logo}
+              alt={siteInfo.brand.name}
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+            <span className="font-semibold text-xl text-charcoal dark:text-platinum">
+              {siteInfo.brand.name}
+            </span>
           </div>
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center ml-auto space-x-8">
-            {navItems.map((item) =>
-              item.isHash ? (
-                <button
-                  key={item.href}
-                  onClick={() => handleNavigation(item)}
-                  className={`text-charcoal dark:text-platinum hover:text-primary transition-colors ${
-                    activeSection === item.href.substring(2) ? 'text-gold' : ''
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-charcoal dark:text-platinum hover:text-primary transition-colors ${
-                    pathname === item.href ? 'text-gold' : ''
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={() => (window.location.href = '/sign-up')}
-            >
-              Get Started
-            </Button>
-          </div>
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="hidden md:flex items-center space-x-4">
+            <NavLink href="/">Home</NavLink>
+            <NavLink href="/about">About</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-charcoal dark:text-platinum hover:text-gold transition-colors"
-              aria-label="Toggle menu"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="p-2 rounded-lg hover:bg-platinum/20 dark:hover:bg-obsidian/20 transition-colors"
+              aria-label="Toggle Theme"
             >
+              {theme === 'dark' ? (
+                <FaSun className="text-gold text-xl" />
+              ) : (
+                <FaMoon className="text-charcoal dark:text-ivory text-xl" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-charcoal dark:text-ivory hover:text-gold transition-colors"
+            aria-label="Toggle Mobile Menu"
+          >
+            {isMobileMenuOpen ? (
+              // Close icon
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              // Hamburger icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -128,10 +129,65 @@ export default function Navbar() {
                   d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5"
                 />
               </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+            )}
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-x-0 top-16 md:hidden bg-ivory/95 dark:bg-charcoal/95 backdrop-blur-sm border-b border-platinum/10 shadow-lg z-40"
+          >
+            <nav className="max-w-7xl mx-auto px-4 py-4">
+              <div className="flex flex-col items-center space-y-4">
+                <NavLink
+                  href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-center"
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  href="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-center"
+                >
+                  About
+                </NavLink>
+                <NavLink
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-center"
+                >
+                  Contact
+                </NavLink>
+                <button
+                  onClick={() => {
+                    setTheme(theme === 'dark' ? 'light' : 'dark');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="p-2 rounded-lg hover:bg-platinum/20 dark:hover:bg-obsidian/20 transition-colors"
+                  aria-label="Toggle Theme"
+                >
+                  {theme === 'dark' ? (
+                    <FaSun className="text-gold text-xl" />
+                  ) : (
+                    <FaMoon className="text-charcoal dark:text-ivory text-xl" />
+                  )}
+                </button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
-}
+};
+
+export default NavBar;
