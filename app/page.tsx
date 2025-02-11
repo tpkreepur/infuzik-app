@@ -2,7 +2,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Hero from "@/components/sections/hero/default";
-import FrostedCard from "@/components/FrostedCard";
+// import FrostedCard from "@/components/FrostedCard";
 
 export default function Landing(): JSX.Element {
   return (
