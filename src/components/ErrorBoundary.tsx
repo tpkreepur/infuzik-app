@@ -11,11 +11,15 @@ interface State {
 }
 
 export class ErrorBoundary extends Component<Props, State> {
+  static defaultProps = {
+    fallback: null,
+  };
   public state: State = {
-    hasError: false
+    hasError: false,
   };
 
-  public static getDerivedStateFromError(_: Error): State {
+  public static getDerivedStateFromError(_error: Error): State {
+    void _error;
     return { hasError: true };
   }
 
@@ -25,10 +29,12 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="p-4 text-red-500 bg-red-100 rounded-lg">
-          Something went wrong with the audio player. Please refresh the page.
-        </div>
+      return (
+        this.props.fallback || (
+          <div className="p-4 text-red-500 bg-red-100 rounded-lg">
+            Something went wrong with the audio player. Please refresh the page.
+          </div>
+        )
       );
     }
 
