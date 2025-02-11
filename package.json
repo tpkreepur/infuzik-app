@@ -1,0 +1,47 @@
+{
+  "name": "infuzik-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nextui-org/react": "^2.6.11",
+    "@shadcn/ui": "^0.0.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.17.0",
+    "motion": "^11.17.0",
+    "next": "^15.1.4",
+    "next-seo": "^6.6.0",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "tone": "^15.0.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.4",
+    "jest": "^29.7.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5"
+  }
+}
