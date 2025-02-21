@@ -6,6 +6,20 @@
 
 Entrain your brain with Infuzik
 
+## PRICING
+
+	Tier 1	Tier 2	Tier 3	Tier 4
+
+Price/mo	 $ 9.99 	 $ 29.99 	 $ 59.99 	 $ 69.99
+Contains	Focus, Productivity, Relaxation, Sleep (3,4,6 top row, 1 row 2)	All icons	All icons plus 5 1 hour playlists (layering)	All icons and playlists plus Airplane mode app
+Timing	Now	Now	Phase 2	Phase 3
+
+
+
+
+Shokz 	OpenMove	OpenRun Pro	OpenFit	OpenFit 2
+https://www.amazon.com/s?k=shokz+bone+conduction+headphones&crid=489I4ZK34ABH&qid=1737149308&sprefix=shokz%2Caps%2C85&xpid=5VojxoLJskBua&ref=sr_pg_1	79.95	159.95	159.95	199.95
+
 ## ABOUT US
 
 ## Who we are
