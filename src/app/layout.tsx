@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+      </head>
       <body className="min-h-screen bg-platinum text-charcoal dark:bg-platinum-dark dark:text-ivory">
         <div className="fixed top-20 left-0 w-full h-[300px] pointer-events-none z-[-1] bg-[url('/static/images/theta.svg')] bg-no-repeat bg-top bg-cover" />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
