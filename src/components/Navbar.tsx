@@ -162,6 +162,13 @@ const NavBar: React.FC = () => {
                   About
                 </NavLink>
                 <NavLink
+                  href="/pricing"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full text-center"
+                >
+                  Pricing
+                </NavLink>
+                <NavLink
                   href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full text-center"

@@ -26,7 +26,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 items-center justify-center">
           <Button
             variant="primary"
-            onClick={() => router.push('/sign-up')}
+            onClick={() => router.push('/pricing')}
             aria-label="Begin your journey - Sign up now"
           >
             Get Started
