@@ -1,85 +1,206 @@
 'use client';
 import { motion } from 'framer-motion';
 import FrostedCard from '@/components/FrostedCard';
+import { FaUsers, FaCog, FaGift, FaCheckCircle } from 'react-icons/fa'; // Added FaCheckCircle
 
 const containerVariants = {
-  initial: {},
-  animate: {
+  hidden: {},
+  visible: {
     transition: {
-      staggerChildren: 0.2, // delay between each child
+      staggerChildren: 0.2,
     },
   },
 };
 
-const cardVariants = {
-  initial: { opacity: 1, y: 50 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
 };
 
 export default function About() {
   return (
     <motion.div
       variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      className="flex flex-col items-center justify-center min-h-screen p-6 space-y-6" // space-y-6 adds vertical spacing
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col items-center min-h-screen py-16 px-4 sm:px-6 lg:px-8 gap-12 md:gap-16"
     >
-      <motion.div variants={cardVariants} className="w-full max-w-2xl">
-        <FrostedCard>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-left">
-            Who we are
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-left mb-6 sm:mb-8 text-charcoal/80 dark:text-platinum/80">
-            Infuzik was started by Binaural Beats enthusiasts with close to 10
-            years experiencing the benefits of Binaural Beats. Over the years we
-            have tried beats from several different providers. Not finding
-            exactly what we wanted we decided to develop our own. Once we
-            succeeded, we realized that others could benefit from our customized
-            beats and thus Infuzik was born.
+      {/* Section 1: Who We Are */}
+      <motion.div variants={itemVariants} className="w-full max-w-3xl">
+        <FrostedCard className="p-6 sm:p-8 md:p-10">
+          <div className="flex items-center gap-4 mb-4 sm:mb-6">
+            <FaUsers className="text-gold text-2xl sm:text-3xl flex-shrink-0" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal dark:text-platinum leading-tight">
+              Who We Are
+            </h2>
+          </div>
+          {/* Updated Content */}
+          <h3 className="text-lg sm:text-xl font-medium text-gold mb-3">
+            Infuzik: Where Sound Science Meets Your Rhythm
+          </h3>
+          <p className="text-base sm:text-lg leading-relaxed text-charcoal/80 dark:text-platinum/80">
+            We’re not just another binaural beats company—we’re obsessive sound
+            scientists turned innovators. After a decade of using generic beats
+            that never *quite* fit our lives, we became our own lab rats.
+            Frustrated by one-size-fits-all solutions, we engineered beats that
+            adapt to *your* day—whether you’re crushing deadlines, chasing PRs
+            at the gym, or finally getting that deep sleep you deserve. Now,
+            we’re on a mission to turn *your* playlists into precision tools for
+            living better.
           </p>
         </FrostedCard>
       </motion.div>
 
-      <motion.div variants={cardVariants} className="w-full max-w-2xl">
-        <FrostedCard>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-left">
-            What we do
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-left mb-6 sm:mb-8 text-charcoal/80 dark:text-platinum/80">
-            We offer Binaural Beats with customized settings that are intended
-            to be used by themselves when no distractions are desired, also
-            offering a service to combine beats with the music of your choice.
-            This allows you to listen to what you want and experience the
-            benefits of Binaural Beats at the same time. What you want to listen
-            to doesn’t even have to be music. Some like to prepare for sleep
-            listening to white noise, calming sounds or even ASMR. Combining
-            that with Delta waves for sleep provides a powerful improvement to
-            your sleep regimen. Combining Alpha waves with your favorite
-            playlist can supercharge your workout. Guided meditation combined
-            with Theta waves will get you in the zone and help you stay there.
-            Waking up to Alpha waves while you get ready for work can be your
-            digital cup of coffee.
+      {/* Section 2: What We Do */}
+      <motion.div variants={itemVariants} className="w-full max-w-3xl">
+        <FrostedCard className="p-6 sm:p-8 md:p-10">
+          <div className="flex items-center gap-4 mb-4 sm:mb-6">
+            <FaCog className="text-gold text-2xl sm:text-3xl flex-shrink-0" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal dark:text-platinum leading-tight">
+              What We Do
+            </h2>
+          </div>
+          {/* Updated Content */}
+          <h3 className="text-lg sm:text-xl font-medium text-gold mb-3">
+            Upgrade Every Moment with Sound
+          </h3>
+          <p className="text-base sm:text-lg leading-relaxed text-charcoal/80 dark:text-platinum/80 mb-4">
+            Imagine: Your workout playlist supercharged with focus-enhancing
+            Alpha waves. White noise for sleep, infused with sleep-optimizing
+            Delta frequencies. A presentation soundtrack that sharpens your
+            mental clarity—no distracting fluff.
           </p>
+          <p className="text-base sm:text-lg leading-relaxed text-charcoal/80 dark:text-platinum/80 mb-4">
+            We’ve reengineered binaural beats to{' '}
+            <strong>work with your life</strong>, not against it:
+          </p>
+          <ul className="list-none space-y-2 text-base sm:text-lg text-charcoal/80 dark:text-platinum/80">
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                <strong>Custom Fusion Technology:</strong> Layer beats with
+                *your* music, podcasts, or ASMR
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                <strong>Activity-Specific Frequencies:</strong> Scientifically
+                tuned for work, fitness, sleep, and flow states
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                <strong>Zero Distractions:</strong> Unlike YouTube mixes, our
+                focus beats are pure frequency fuel
+              </span>
+            </li>
+          </ul>
         </FrostedCard>
       </motion.div>
 
-      <motion.div variants={cardVariants} className="w-full max-w-2xl">
-        <FrostedCard>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-left">
-            What we offer
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-left mb-6 sm:mb-8 text-charcoal/80 dark:text-platinum/80">
-            Our products We offer subscription-based access to customized
-            Binaural Beats with unique settings that can be used beyond
-            meditation and sleep settings (we offer meditation and sleep beats
-            too). The focus categories of beats we offer are intended to be used
-            during activities such as exercise and work. When combined with bone
-            conduction headsets (that we also offer) experiencing the benefits
-            of extra focus during work hours becomes convenient. Our beats for
-            work do not have an ambient music overlay as is generally found from
-            YouTube or App offerings from others. This removes distraction while
-            still providing the focus benefits.
-          </p>
+      {/* Section 3: What We Offer */}
+      <motion.div variants={itemVariants} className="w-full max-w-3xl">
+        <FrostedCard className="p-6 sm:p-8 md:p-10">
+          <div className="flex items-center gap-4 mb-4 sm:mb-6">
+            <FaGift className="text-gold text-2xl sm:text-3xl flex-shrink-0" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-charcoal dark:text-platinum leading-tight">
+              What We Offer
+            </h2>
+          </div>
+          {/* Updated Content */}
+          <h3 className="text-lg sm:text-xl font-medium text-gold mb-4">
+            Your Personal Sound Lab
+          </h3>
+          {/* Table */}
+          <div className="overflow-x-auto mb-6">
+            {' '}
+            {/* Added overflow for smaller screens */}
+            <table className="w-full text-left border-collapse text-base sm:text-lg">
+              <thead className="border-b border-platinum/30 dark:border-charcoal/30">
+                <tr>
+                  <th className="py-2 pr-2 font-semibold text-charcoal dark:text-platinum">
+                    Core Features
+                  </th>
+                  <th className="py-2 pl-2 font-semibold text-charcoal dark:text-platinum">
+                    Why It Matters
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-platinum/20 dark:divide-charcoal/20">
+                <tr>
+                  <td className="py-3 pr-2 text-charcoal/80 dark:text-platinum/80">
+                    <strong>Customizable Beats+</strong>
+                  </td>
+                  <td className="py-3 pl-2 text-charcoal/80 dark:text-platinum/80">
+                    Blend Delta/Alpha/Theta waves with *any* audio source
+                    (Spotify, white noise, etc.)
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-2 text-charcoal/80 dark:text-platinum/80">
+                    <strong>Bone Conduction Bundles</strong>
+                  </td>
+                  <td className="py-3 pl-2 text-charcoal/80 dark:text-platinum/80">
+                    Open-ear listening for safe workouts/commutes (curated
+                    headsets + beat pairings)
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-2 text-charcoal/80 dark:text-platinum/80">
+                    <strong>Focus Mode Beats</strong>
+                  </td>
+                  <td className="py-3 pl-2 text-charcoal/80 dark:text-platinum/80">
+                    Distraction-free productivity pulses (no ambient music
+                    masking benefits)
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-2 text-charcoal/80 dark:text-platinum/80">
+                    <strong>Sleep Science Sessions</strong>
+                  </td>
+                  <td className="py-3 pl-2 text-charcoal/80 dark:text-platinum/80">
+                    Wind down with your favorite nature sounds (coming soon!) +
+                    clinically-tested Delta sequences
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Bullet Points */}
+          <h4 className="text-md sm:text-lg font-semibold text-gold mb-3">
+            More Than Subscriptions—We’re Your Sound Squad
+          </h4>
+          <ul className="list-none space-y-2 text-base sm:text-lg text-charcoal/80 dark:text-platinum/80">
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                10+ years of beat-curation expertise in every frequency
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                Hardware/software integration you won’t find on meditation apps
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
+              <span>
+                Updates shaped by neuroacoustic research (we geek out so you
+                don’t have to)
+              </span>
+            </li>
+          </ul>
         </FrostedCard>
       </motion.div>
     </motion.div>

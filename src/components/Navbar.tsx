@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
 import { siteInfo } from '@/lib/site-info';
 import clsx from 'clsx';
 
@@ -36,9 +36,8 @@ const NavBar: React.FC = () => {
   }) => {
     const active = pathname === href;
     return (
-      <Link href={href}>
+      <Link href={href} onClick={onClick}>
         <span
-          onClick={onClick}
           className={clsx(
             'px-2 py-1 inline-block',
             'text-charcoal dark:text-ivory',
@@ -99,37 +98,9 @@ const NavBar: React.FC = () => {
             aria-label="Toggle Mobile Menu"
           >
             {isMobileMenuOpen ? (
-              // Close icon
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <FaTimes className="w-6 h-6" /> // Use FaTimes icon
             ) : (
-              // Hamburger icon
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5"
-                />
-              </svg>
+              <FaBars className="w-6 h-6" /> // Use FaBars icon
             )}
           </button>
         </nav>

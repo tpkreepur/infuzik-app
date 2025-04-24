@@ -22,6 +22,7 @@ interface SocialLinks {
   twitter?: string;
   facebook?: string;
   instagram?: string;
+  linkedin?: string;
   [key: string]: string | undefined;
 }
 
@@ -35,25 +36,26 @@ interface SiteInfo {
 
 // Define your site's metadata and branding details
 export const siteInfo: SiteInfo = {
-  title: "Infuzik",
-  description: "Empower your cognitive performance with Infuzik.",
+  title: 'Infuzik',
+  description: 'Empower your cognitive performance with Infuzik.',
   brand: {
-    name: "Infuzik",
-    logo: "/static/images/logo.svg", // update the path to your logo asset
+    name: 'Infuzik',
+    logo: '/static/images/logo.svg', // update the path to your logo asset
     colors: {
-      gold: "#D4AF37",
-      gray: "#808080",
-      charcoal: "#36454F",
-      ivory: "#FFFFF0",
+      gold: '#D4AF37',
+      gray: '#808080',
+      charcoal: '#36454F',
+      ivory: '#FFFFF0',
     },
   },
   contact: {
-    email: "contact@infuzik.com",
-    phone: "123-456-7890",
+    email: 'contact@infuzik.com',
+    phone: '123-456-7890',
   },
   social: {
-    twitter: "https://twitter.com/yourbrand",
-    facebook: "https://facebook.com/yourbrand",
-    instagram: "https://instagram.com/yourbrand",
+    twitter: 'https://twitter.com/infuzik',
+    facebook: 'https://facebook.com/infuzik',
+    instagram: 'https://instagram.com/infuzik',
+    linkedin: 'https://linkedin.com/company/infuzik',
   },
 };

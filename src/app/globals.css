@@ -17,8 +17,6 @@ body {
 
 body {
   font-family: var(--font-roboto-condensed);
-  background-color: var(--bg-platinum); /* platinum */
-  color: var(--charcoal); /* charcoal */
   @apply bg-platinum dark:bg-platinum-dark text-charcoal dark:text-platinum font-sans antialiased;
   text-rendering: optimizeLegibility;
   scroll-padding-top: 4rem; /* Add padding for fixed header */
@@ -92,17 +90,4 @@ a {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-}
-
-/* Menu animations */
-.menu-enter {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 300ms ease-in-out, opacity 200ms ease-in-out;
-}
-
-.menu-enter-active {
-  max-height: 500px;
-  opacity: 1;
 }
