@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import FrostedCard from '@/components/FrostedCard';
-import { FaUsers, FaCog, FaGift, FaCheckCircle } from 'react-icons/fa'; // Added FaCheckCircle
+import { FaUsers, FaCog, FaGift, FaCheckCircle } from 'react-icons/fa';
 
 const containerVariants = {
   hidden: {},

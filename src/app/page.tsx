@@ -1,38 +1,43 @@
-'use client';
-import Button from '@/components/Button';
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import LandingHero from '@/components/LandingHero';
+import AboutContent from '@/components/sections/AboutContent'; // Adjust path if needed
+import PricingContent from '@/components/sections/PricingContent'; // Adjust path if needed
+import ContactContent from '@/components/sections/ContactContent'; // Adjust path if needed
 
 export default function Home() {
-  const router = useRouter();
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="flex flex-col items-center justify-center min-h-screen"
-    >
-      <div className="space-y-6 sm:space-y-8 text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-          Elevate Your
-          <br />
-          Mental State
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl max-w-2xl text-center mb-6 sm:mb-8 premium-text text-charcoal/80 dark:text-platinum/80">
-          Let Infuzik entrain your brain to the perfect frequency for focus,
-          relaxation, or sleep.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4 items-center justify-center">
-          <Button
-            variant="primary"
-            onClick={() => router.push('/pricing')}
-            aria-label="Begin your journey - Sign up now"
-          >
-            Get Started
-          </Button>
-        </div>
-      </div>
-    </motion.div>
+    // No need for extra motion container here unless desired
+    <>
+      {/* Hero Section */}
+      <section id="home">
+        <LandingHero />
+      </section>
+
+      {/* About Section */}
+      {/* Add padding top/bottom for spacing between sections */}
+      <section
+        id="about"
+        className="py-16 md:py-24 bg-platinum dark:bg-platinum-dark"
+      >
+        <AboutContent />
+      </section>
+
+      {/* Pricing Section */}
+      <section
+        id="pricing"
+        className="py-16 md:py-24 bg-ivory dark:bg-charcoal"
+      >
+        {' '}
+        {/* Example different bg */}
+        <PricingContent />
+      </section>
+
+      {/* Contact Section */}
+      <section
+        id="contact"
+        className="py-16 md:py-24 bg-platinum dark:bg-platinum-dark"
+      >
+        <ContactContent />
+      </section>
+    </>
   );
 }

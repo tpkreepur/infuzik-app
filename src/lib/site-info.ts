@@ -37,7 +37,7 @@ interface SiteInfo {
 // Define your site's metadata and branding details
 export const siteInfo: SiteInfo = {
   title: 'Infuzik',
-  description: 'Empower your cognitive performance with Infuzik.',
+  description: 'Your Sound, Supercharged.',
   brand: {
     name: 'Infuzik',
     logo: '/static/images/logo.svg', // update the path to your logo asset

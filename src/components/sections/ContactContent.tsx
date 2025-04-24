@@ -17,7 +17,7 @@ export default function Contact() {
 
     // Simulate submission for demonstration
     console.log('Form Data:', { name, email, message });
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setStatus('Message sent successfully!'); // Update status
     // Optionally clear fields after successful submission
     // setName('');
@@ -30,8 +30,7 @@ export default function Contact() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      // Removed 'space-between', added padding-top/bottom for spacing if needed
-      className="flex flex-col items-center justify-center min-h-screen p-6 pt-20 pb-10" // Added pt-20 assuming fixed navbar
+      className="flex flex-col items-center justify-center min-h-screen p-6 pt-20 pb-10"
     >
       <section className="w-full max-w-md bg-white dark:bg-charcoal rounded-lg shadow-lg p-8">
         <h1 className="text-3xl font-bold text-center text-charcoal dark:text-platinum mb-6">
