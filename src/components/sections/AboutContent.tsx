@@ -48,12 +48,12 @@ export default function About() {
           <p className="text-base sm:text-lg leading-relaxed text-charcoal/80 dark:text-platinum/80">
             We’re not just another binaural beats company—we’re obsessive sound
             scientists turned innovators. After a decade of using generic beats
-            that never *quite* fit our lives, we became our own lab rats.
+            that never <i>quite</i> fit our lives, we became our own lab rats.
             Frustrated by one-size-fits-all solutions, we engineered beats that
-            adapt to *your* day—whether you’re crushing deadlines, chasing PRs
-            at the gym, or finally getting that deep sleep you deserve. Now,
-            we’re on a mission to turn *your* playlists into precision tools for
-            living better.
+            adapt to <i>your</i> day—whether you’re crushing deadlines, chasing
+            PRs at the gym, or finally getting that deep sleep you deserve. Now,
+            we’re on a mission to turn <i>your</i> playlists into precision
+            tools for living better.
           </p>
         </FrostedCard>
       </motion.div>
@@ -86,7 +86,7 @@ export default function About() {
               <FaCheckCircle className="text-gold mt-1 flex-shrink-0" />
               <span>
                 <strong>Custom Fusion Technology:</strong> Layer beats with
-                *your* music, podcasts, or ASMR
+                <i> your</i> music, podcasts, or ASMR
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -141,7 +141,7 @@ export default function About() {
                     <strong>Customizable Beats+</strong>
                   </td>
                   <td className="py-3 pl-2 text-charcoal/80 dark:text-platinum/80">
-                    Blend Delta/Alpha/Theta waves with *any* audio source
+                    Blend Delta/Alpha/Theta waves with <i>any</i> audio source
                     (Spotify, white noise, etc.)
                   </td>
                 </tr>
